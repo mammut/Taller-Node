@@ -10,5 +10,8 @@
     "node"
   ],
   "author": "jpeg",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.14.1"
+  }
 }
