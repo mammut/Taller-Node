@@ -1,0 +1,14 @@
+{
+  "name": "clase-2",
+  "description": "Clase 2 del taller",
+  "main": "1.js",
+  "authors": [
+    "jpeg"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/mammut/Taller-Node",
+  "private": true,
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
