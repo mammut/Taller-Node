@@ -1,13 +1,10 @@
-const sequelize = require('../lib/db.js').sequelize;
-const Sequelize = require('../lib/db.js').Sequelize;
-
-var User = sequelize.define('users', {
-    name: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-  email: Sequelize.STRING
-});
-
-
-module.exports = User;
+module.exports = function(sequelize, DataTypes) {
+    var User = sequelize.define('User', {
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        email: DataTypes.STRING
+    });
+    return User;
+};

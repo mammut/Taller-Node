@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var R = require('ramda');
-var User = require('./models/User.js');
+var db = require('./lib/db.js');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -32,7 +32,7 @@ app.post('/users', (req, res) => {
         name: req.body.username,
         email: req.body.email
     };
-    User.create(usuario_nuevo)
+    db.User.create(usuario_nuevo)
     .then( (new_user) => {
         res.json(new_user);
     })
@@ -60,7 +60,7 @@ app.put('/users/:id', (req, res) => {
 });
 
 
-User.sync({force: true}).then(function () {
+db.sequelize.sync({force: true}).then(function () {
     app.listen(1313, () => {
         console.log('Servidor arriba en el puerto 1313');
     });
