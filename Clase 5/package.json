@@ -1,0 +1,23 @@
+{
+  "name": "taller",
+  "version": "1.0.0",
+  "description": "usando requires",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test:watch": "mocha test/**/*.test.js -w",
+    "test": "mocha test/**/*.test.js"
+  },
+  "keywords": [
+    "require"
+  ],
+  "author": "jpeg",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "moment": "^2.15.1",
+    "ramda": "^0.22.1",
+    "sequelize": "^3.24.3"
+  }
+}
