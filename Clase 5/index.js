@@ -12,8 +12,11 @@ app.use(bodyParser.json());
  */
 app.get('/users/:id', (req, res) => {
     var user = R.find(R.propEq('id', Number(req.params.id)), users);
-    res.json(user);
-    res.end();
+    db.User.findById(req.params.id)
+    .then(function(user) {
+        res.json(user);
+        res.end();
+    });
 });
 
 /**
@@ -33,12 +36,12 @@ app.post('/users', (req, res) => {
         email: req.body.email
     };
     db.User.create(usuario_nuevo)
-    .then( (new_user) => {
-        res.json(new_user);
-    })
-    .catch( (err) => {
-        res.json(err);
-    });
+        .then( (new_user) => {
+            res.json(new_user);
+        })
+        .catch( (err) => {
+            res.json(err);
+        });
 });
 
 /**

@@ -1,0 +1,12 @@
+{
+  "name": "Clase-6",
+  "version": "1.0.0",
+  "description": "clase 6 de nodejs",
+  "main": "index.js",
+  "author": "jpeg",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "request": "^2.75.0"
+  }
+}
