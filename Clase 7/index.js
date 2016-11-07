@@ -10,12 +10,11 @@ app.get('/', function (req, res) {
 
 server.listen(3000);
 
-io.on('connection', function (socket) {
-    console.log(`${socket.id} se ha conectado`);
-    socket.on('msg:new', function(data) {
-        console.log(data);
-
-        //enviar mensajes al resto de los usuarios (broadcast)
-    });
-
+var chat = io
+    .of('chat')
+    .on('connection', function (socket) {
+        console.log(`${socket.id} se ha conectado`);
+        socket.on('msg:new', function(data) {
+            chat.emit('msg:created', data);
+        });
 });

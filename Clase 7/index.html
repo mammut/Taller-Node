@@ -26,12 +26,7 @@
     <input type="text" id="user" placeholder="Nickname">
     <input type="text" id="msg" placeholder="Ingresa un mensaje">
     <button>Enviar Mensaje</button>
-    <ul id="messages">
-        <li>Usuario: mensaje</li>
-        <li>Usuario: mensaje</li>
-        <li>Usuario: mensaje</li>
-        <!-- append la lista -->
-    </ul>
+    <ul id="messages"></ul>
 </form>
 
 <script src="node_modules/jquery/dist/jquery.js"></script>
@@ -39,21 +34,23 @@
 
 <script>
 $(function() {
-  var socket = io.connect('http://localhost:3000');
+  var chat = io.connect('http://localhost:3000/chat');
 
   $messages = $('#messages');
   $msg = $('#msg');
   $user = $('#user');
   $('#chat').on('submit', function(e) {
     e.preventDefault();
-    socket.emit('msg:new', {
+    chat.emit('msg:new', {
         user: $user.val(),
         msg: $msg.val()
     });
   });
 
   // Recibir mensaje nuevo y agregarlo a la lista de mensajes
-  // $messages.append("<li>"+ usuario + ": " + mensaje + "</li>");
+  chat.on('msg:created', function(data) {
+    $messages.append("<li>"+ data.user + ": " + data.msg + "</li>");
+  });
 });
 </script>
 </body>
