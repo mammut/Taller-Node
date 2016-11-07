@@ -3,9 +3,12 @@ var express = require('express');
 var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
+var path = require('path');
+
+app.use('/node_modules', express.static(path.join(__dirname + '/node_modules')));
 
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 server.listen(3000);
